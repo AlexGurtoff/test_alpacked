@@ -31,7 +31,8 @@ jobs:
         working-directory: ./web
         run: |
           npm run build
-          ls web
+          ls -la
+          ls ./web
           
       - name: Upload the artifact
         uses: actions/upload-artifact@v2
