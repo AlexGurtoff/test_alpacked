@@ -23,8 +23,13 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
-      
-      - run: npm -v
-      
-      - run: node -v
-
+        
+      - name: Installing gatsby
+        working-directory: ./web
+        run: |
+          ls -la
+          npm install
+          npm install -g gatsby-cli
+          gatsby --version
+        
+        
