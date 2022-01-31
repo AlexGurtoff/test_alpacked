@@ -14,11 +14,6 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    
-    env:
-      CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
-      CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_DELIVERY_KEY }}
-      CONTENTFUL_MANAGEMENT_TOKEN: ${{ secrets.CONTENTFUL_MANAGEMENT_KEY }}
 
     steps:
       - name: Clone repository
@@ -34,7 +29,7 @@ jobs:
       - name: Build the artifact
         working-directory: ./web
         run: |
-          npm run setup
+          npm run setup -- --spaceId=${{ secrets.CONTENTFUL_SPACE_ID }} --managementToken=${{ secrets.CONTENTFUL_MANAGEMENT_KEY }} --accessToken=${{ secrets.CONTENTFUL_DELIVERY_KEY }}
           gatsby build
           ls -la
           ls public
