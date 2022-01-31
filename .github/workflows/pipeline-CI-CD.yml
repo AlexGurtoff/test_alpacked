@@ -3,10 +3,6 @@ name: Pipeline-CI-CD
 
 on:
 
-  push:
-    branches: 
-      - master
-      - Solution
   pull_request:
     branches: master
 
