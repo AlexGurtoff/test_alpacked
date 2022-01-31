@@ -30,6 +30,4 @@ jobs:
         working-directory: ./web
         run: |
           npm run setup -- --spaceId=${{ secrets.CONTENTFUL_SPACE_ID }} --managementToken=${{ secrets.CONTENTFUL_MANAGEMENT_KEY }} --accessToken=${{ secrets.CONTENTFUL_DELIVERY_KEY }}
-          gatsby build
           ls -la
-          ls public
