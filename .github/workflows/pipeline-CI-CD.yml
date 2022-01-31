@@ -29,4 +29,12 @@ jobs:
         
       - name: Build the artifact
         working-directory: ./web
-        run: npm run build
+        run: |
+          npm run build
+          ls web
+          
+      - name: Upload the artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: web
+          path: web/public
