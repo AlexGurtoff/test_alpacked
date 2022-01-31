@@ -24,10 +24,13 @@ jobs:
         run: |
           ls -la
           npm install
-          npm install -g gatsby-cli
         
-      - name: Build the artifact
+      - name: Setup npm
         working-directory: ./web
         run: |
           npm run setup -- --spaceId=${{ secrets.CONTENTFUL_SPACE_ID }} --managementToken=${{ secrets.CONTENTFUL_MANAGEMENT_KEY }} --accessToken=${{ secrets.CONTENTFUL_DELIVERY_KEY }}
           ls -la
+        
+      - name: Build the artifact
+        working-directory: ./web
+        run: npm run build
