@@ -81,9 +81,7 @@ jobs:
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_SECRET_KEY }}
       
-      - name: Get outputs
+      - name: Deploy to S3
         working-directory: ./pulumi
-        run: |
-          pulumi stack output bucket
-          pulumi stack output site_url
+        run: aws s3 cp ../public/ s3://$(pulumi stack output bucker) --recursive
       
