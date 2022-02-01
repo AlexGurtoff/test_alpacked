@@ -83,5 +83,5 @@ jobs:
       
       - name: Deploy to S3
         working-directory: ./pulumi
-        run: aws s3 cp ../public/ s3://$(pulumi stack output bucker) --recursive
+        run: aws s3 cp ../public/ s3://$(pulumi stack output bucket) --recursive
       
