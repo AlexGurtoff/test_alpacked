@@ -84,4 +84,9 @@ jobs:
       - name: Deploy to S3
         working-directory: ./pulumi
         run: aws s3 cp ../public/ s3://$(pulumi stack output bucket) --recursive
-      
+        
+      - name: Healthcheck
+        run: |
+          httpStatus=$(curl -LI  http://$(pulumi stack output site_url) -o /dev/null -w '%{http_code}' -s)
+          if [[ $httpStatus -eq 200 ]]; then echo Service OK with status: ${httpStatus}; else echo Service error with status code = ${httpStatus}; fi;
+    
